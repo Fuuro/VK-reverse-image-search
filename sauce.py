@@ -24,8 +24,9 @@ while True:
                             url = photo['sizes'][-1]['url']
                             url=url.split("?")[0]
                             count=url.count('/')
-                            url2=url.split('/')
-                            url = url.replace(url2[3]+'/', "")
+                             if count > 4:
+                                url2=url.split('/')
+                                url = url.replace(url2[3]+'/', "")
                             img = requests.get(url).content
                             f = io.BytesIO(img)
                             id = event.obj['peer_id']
